@@ -170,7 +170,6 @@ window.addEventListener("load",function(){
 				//мяч уже движется
 				else { 
 					var res = game.outOfBounds(); 
-					if (res) console.log(res);
 						switch(res) {
 							case 1: game.givePnt(2);
 									game.resetBall();
@@ -179,13 +178,10 @@ window.addEventListener("load",function(){
 									game.resetBall();
 								break;
 							case 3: 
-									console.log(game.obj.ball.dir);
 									if(Math.sin(game.obj.ball.dir) > 0) game.obj.ball.dir = -normalize(2*Math.PI-normalize(game.obj.ball.dir));
 								break;
 							case 4:
-									console.log(game.obj.ball.dir);
 									if(Math.sin(game.obj.ball.dir) < 0) game.obj.ball.dir = normalize(2*Math.PI-normalize(game.obj.ball.dir));
-									console.log(game.obj.ball.dir);
 								break;
 						}
 					}						
@@ -252,6 +248,7 @@ window.addEventListener("load",function(){
 		redrawPoints:function(){
 			var Ctx = game.hidCnvCtx;
 			Ctx.font = "64px Arial";
+			Ctx.clearRect(0, 0, game.mainCnv.width, game.mainCnv.height);
 			Ctx.fillText(game.points[0],50,75)
 			Ctx.fillText(game.points[1],650,75)
 			game.ptsCnvCtx.clearRect(0,0,800,600);
